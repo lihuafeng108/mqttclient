@@ -6,5 +6,12 @@
 
 MQTT 连接信息生成器: https://iotcore-dev-tool.gz.bcebos.com/mqtt-sign/ 填写上述创建的设备信息，自己的客户端代码填写相应的信息创建mqtt客户端连接，就可以实现消息的发布和订阅了。
 
+## 首先生成和安装mqttclient的库和头文件
+./build.sh
+./make-libmqttclient.sh
+## 分别进去__lihf_test/mqtt_client1 和 __lihf_test/mqtt_client2
+make clean
+make
 ## 调试export一下mqttclient的环境变量（填写自己ubuntu的绝对路径）
 export LD_LIBRARY_PATH=/home/lihf/lab/mqttclient/libmqttclient/lib:/lib:/usr/lib:${LD_LIBRARY_PATH}
+## 分别运行__lihf_test/mqtt_client1/obj/mqtt_client1 和 __lihf_test/mqtt_client1/obj/mqtt_client2 调试程序

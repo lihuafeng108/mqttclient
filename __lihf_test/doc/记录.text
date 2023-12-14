@@ -1,0 +1,10 @@
+百度智能云: https://cloud.baidu.com/
+详细可以参考（这个比较详细）：https://zhuanlan.zhihu.com/p/661105749
+大概步骤如下:
+左上角"产品" -> 应用产品（左下角） -> 物联网 -> 物联网基础服务 -> 物联网核心套件 -> 立即使用 -> 实例列表 -> 创建 IoT Core
+    -> 按需付费(100W条以内免费，够调试用) -> 填写名称 -> 确认购买 -> 点击刚刚创建的实例 -> 添加模板（增加自己的topic） -> 新增设备
+
+MQTT 连接信息生成器: https://iotcore-dev-tool.gz.bcebos.com/mqtt-sign/ 填写上述创建的设备信息，自己的客户端代码填写相应的信息创建mqtt客户端连接，就可以实现消息的发布和订阅了。
+
+## 调试export一下mqttclient的环境变量（填写自己ubuntu的绝对路径）
+export LD_LIBRARY_PATH=/home/lihf/lab/mqttclient/libmqttclient/lib:/lib:/usr/lib:${LD_LIBRARY_PATH}

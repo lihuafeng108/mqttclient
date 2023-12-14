@@ -126,6 +126,7 @@ typedef struct mqtt_client {
     platform_timer_t            mqtt_last_received;
     reconnect_handler_t         mqtt_reconnect_handler;
     interceptor_handler_t       mqtt_interceptor_handler;
+    void                        *mqtt_userdata;
 } mqtt_client_t;
 
 
@@ -160,6 +161,7 @@ MQTT_CLIENT_SET_STATEMENT(write_buf_size, uint32_t)
 MQTT_CLIENT_SET_STATEMENT(reconnect_try_duration, uint32_t)
 MQTT_CLIENT_SET_STATEMENT(reconnect_handler, reconnect_handler_t)
 MQTT_CLIENT_SET_STATEMENT(interceptor_handler, interceptor_handler_t)
+MQTT_CLIENT_SET_STATEMENT(userdata, void*)
 
 void mqtt_sleep_ms(int ms);
 mqtt_client_t *mqtt_lease(void);
@@ -172,6 +174,11 @@ int mqtt_unsubscribe(mqtt_client_t* c, const char* topic_filter);
 int mqtt_publish(mqtt_client_t* c, const char* topic_filter, mqtt_message_t* msg);
 int mqtt_list_subscribe_topic(mqtt_client_t* c);
 int mqtt_set_will_options(mqtt_client_t* c, char *topic, mqtt_qos_t qos, uint8_t retained, char *message);
+
+int mqtt_is_connect_success(mqtt_client_t *c);//add by lihf
+const char* mqtt_errormsg(int error_no);//add by lihf
+//void mqtt_set_log(PLOG_FUNCTION logfunc);//add by lihf
+void* mqtt_get_userdata(mqtt_client_t *c);//add by lihf
 
 #ifdef __cplusplus
 }
